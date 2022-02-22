@@ -1,0 +1,109 @@
+.tips {
+  height: 37px;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+  overflow: hidden;
+  box-sizing: border-box;
+  &.inHover {
+    overflow: inherit;
+  }
+  .imgs {
+    opacity: 0;
+    z-index: 1;
+    position: absolute;
+    bottom: 35px;
+    left: 0;
+    transition: 0.5s;
+  }
+  &::before {
+    position: relative;
+    font-size: 14px;
+    z-index: 10;
+    box-sizing: border-box;
+    line-height: 35px;
+    display: inline-block;
+    width: 100%;
+    border: 1px solid #999;
+    color: #aaa;
+    border-radius: 5px;
+    content: attr(data-placeholder);
+  }
+  .trail {
+    position: absolute;
+    z-index: 10;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    border: 1px solid;
+    border-radius: 5px;
+    &.move {
+      border-color: #006bf8;
+      background: #80b7ff;
+    }
+    &.ok {
+      border-color: #35cdbd;
+      background: #cef5ef;
+    }
+    &.error {
+      border-color: #fd7a7d;
+      background: #fee1e1;
+    }
+  }
+  .drag {
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    width: 37px;
+    height: 37px;
+    border-radius: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px;
+    &.move {
+      border-color: #006bf8;
+      background: #006bf8;
+      .icon {
+        fill: #fff;
+      }
+    }
+    &.ok {
+      border-color: #35cdbd;
+      background: #35cdbd;
+      .icon {
+        fill: #fff;
+      }
+    }
+    &.error {
+      background: #fd7a7d;
+      border-color: #fd7a7d;
+      .icon {
+        fill: #fff;
+      }
+    }
+  }
+  .reload {
+    position: absolute;
+    z-index: 10;
+    width: 20px;
+    opacity: 0.8;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+  }
+
+  &.inHover {
+    .imgs {
+      opacity: 1;
+      box-sizing: content-box;
+      padding-bottom: 20px;
+    }
+  }
+}

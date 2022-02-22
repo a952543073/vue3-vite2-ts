@@ -1,0 +1,23 @@
+# ---> VisualStudioCode
+.settings
+
+node_modules
+.DS_Store
+/dist
+/test
+dist-ssr
+*.local
+.viteCacheDir
+*.zip
+
+logs
+*.log
+/config/types/auto-imports.d.ts*
+/config/types/components.d.ts*
+
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
