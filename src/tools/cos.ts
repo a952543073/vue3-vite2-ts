@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2021-06-21 15:50:29
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-22 16:06:36
+ * @LastEditTime: 2022-02-23 11:44:46
  * @Descripttion:
  */
 import COS from 'cos-js-sdk-v5'
@@ -10,18 +10,18 @@ import COS from 'cos-js-sdk-v5'
 // 接口异步赋值及异步返回 COS初始化
 import https from '/@/utils/https'
 
-const getdata = parameter => https.get(`cms/v1/cos/tmp-secret`, { parameter })
+const getdata = (data: any) => https.get(`cms/v1/cos/tmp-secret`, { data })
 
 let Bucket = ''
 let Region = ''
-async function getAll(filePath) {
+async function getAll(filePath: any) {
   let res = await getdata({ resourcePath: filePath })
   console.log(res)
   Bucket = res.data.bucket
   Region = res.data.region
   return new COS({
     // UseAccelerate: true,
-    getAuthorization: function (options, callback) {
+    getAuthorization: (options: any, callback: any) => {
       callback({
         TmpSecretId: res.data.tmpSecretId, // 临时密钥的 tmpSecretId
         TmpSecretKey: res.data.tmpSecretKey, // 临时密钥的 tmpSecretKey
@@ -36,7 +36,7 @@ async function getAll(filePath) {
  * @method uploadFile
  * @param {object} cos
  */
-function uploadFile(cos, file, fileInfo, callback) {
+function uploadFile(cos: any, file: any, fileInfo: any, callback: any) {
   // var Bucket = 'mfa-test-v2-130122076'
   // var Bucket = 'mfa-test-1258181780'
   // var Bucket = 'mfa-dev-1258181780'
@@ -49,14 +49,14 @@ function uploadFile(cos, file, fileInfo, callback) {
       Region: Region, // 存储桶空间位置
       Key: fileUrl, // 文件目录
       Body: file, // 文件流
-      onHashProgress: function (progressData) {
+      onHashProgress: function (progressData: any) {
         callback({ msg: '校验中', ...progressData })
       },
-      onProgress: function (progressData) {
+      onProgress: function (progressData: any) {
         callback({ msg: '上传中', ...progressData })
       },
     },
-    function (err, data) {
+    function (err: any, data: any) {
       if (err) {
         callback({
           success: false,
@@ -69,9 +69,6 @@ function uploadFile(cos, file, fileInfo, callback) {
         success: true,
         msg: '上传成功!',
         data: data,
-        // src: `https://mfa-dev-1258181780.cos.accelerate.myqcloud.com/${fileUrl}`, // 全球访问节点
-        // src: `https://mfa-dev-1258181780.cos.ap-beijing.myqcloud.com/${fileUrl}`,
-        // src: `https://mfa-test-1258181780.cos.ap-beijing.myqcloud.com/${fileUrl}`,
         signInfo: fileInfo,
       })
     }
@@ -82,7 +79,7 @@ function uploadFile(cos, file, fileInfo, callback) {
  * @method uploadFile
  * @param {object} cos
  */
-function getFile(cos, filePath, callback) {
+function getFile(cos: any, filePath: any, callback: any) {
   // var Bucket = 'mfa-test-1258181780'
   // var Bucket = 'mfa-dev-1258181780'
   // var Region = 'ap-beijing' // 库的地址
@@ -97,7 +94,7 @@ function getFile(cos, filePath, callback) {
       // Range: 'bytes=1-3',
       // Expires: 3600, // 单位秒
     },
-    function (err, data) {
+    function (err: any, data: any) {
       if (err) {
         callback({
           success: false,
@@ -123,8 +120,8 @@ function getFile(cos, filePath, callback) {
 }
 
 /** 获取请求路径 */
-const initGetUrl = function (filePath, Callbalck) {
-  getAll(filePath).then(cos => {
+const initGetUrl = function (filePath: any, Callbalck: any) {
+  getAll(filePath).then((cos) => {
     getFile(cos, filePath, Callbalck)
   })
 }
@@ -139,7 +136,7 @@ const initGetUrl = function (filePath, Callbalck) {
  */
 import dayjs from 'dayjs'
 import { v4 as uuidv4 } from 'uuid'
-const initUploadObj = function (filePath, file, type, uploadStatusCallbalck) {
+const initUploadObj = function (filePath: any, file: any, type: any, uploadStatusCallbalck: any) {
   let fileType = file.name ? file.name.substring(file.name.lastIndexOf('.')).toLowerCase() : ''
   filePath = `cms/${dayjs().format('YYYYMMDD')}/${uuidv4()}${fileType}`
   let fileInfo = {
@@ -164,7 +161,7 @@ const initUploadObj = function (filePath, file, type, uploadStatusCallbalck) {
     })
     return
   }
-  getAll(fileInfo.file_path).then(cos => {
+  getAll(fileInfo.file_path).then((cos) => {
     fileInfo.file_name = file.name
     uploadFile(cos, file, fileInfo, uploadStatusCallbalck)
   })

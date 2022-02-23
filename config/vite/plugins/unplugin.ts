@@ -22,18 +22,18 @@ import {
 export function configUnpluginPlugin(envs?: ViteEnv, isBuild?: boolean): Plugin | Plugin[] {
   return [
     // 组件自动按需引入
-    // Components({
-    //   extensions: ['vue', 'md', 'tsx'],
-    //   include: [/\.vue$/, /\.md$/, /\.tsx$/],
-    //   dts: resolve(process.cwd(), './config/types/components.d.ts'),
-    //   resolvers: [
-    //     AntDesignVueResolver(),
-    //     // ArcoResolver(),
-    //     // NaiveUiResolver(),
-    //     // ElementPlusResolver(),
-    //     VueUseComponentsResolver(),
-    //   ],
-    // }),
+    Components({
+      extensions: ['vue', 'md', 'tsx'],
+      include: [/\.vue$/, /\.md$/, /\.tsx$/],
+      dts: resolve(process.cwd(), './config/types/components.d.ts'),
+      resolvers: [
+        AntDesignVueResolver(),
+        // ArcoResolver(),
+        // NaiveUiResolver(),
+        // ElementPlusResolver(),
+        VueUseComponentsResolver(),
+      ],
+    }),
     // import自动引入
     AutoImport({
       dts: resolve(process.cwd(), './config/types/auto-imports.d.ts'),

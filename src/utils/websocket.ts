@@ -2,14 +2,14 @@
  * @Author: ShiJunJie
  * @Date: 2021-11-25 15:40:15
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-22 16:44:47
+ * @LastEditTime: 2022-02-23 12:07:31
  * @Descripttion: WebSocket工具方法
  */
 
 let websocket: WebSocket = null
-const initWebSocket = (url: string | URL) => {
+const initWebSocket = (url: string) => {
   if ('WebSocket' in window) {
-    websocket = new WebSocket(url)
+    websocket = new WebSocket(`${import.meta.env.VITE_APP_API_URL}/${url.replace(/(^\/)|(\/$)/g, '')}`)
     // 连接错误
     websocket.onerror = setErrorMessage
     // 连接成功
@@ -23,6 +23,7 @@ const initWebSocket = (url: string | URL) => {
     return websocket
   } else {
     alert('当前浏览器不支持 websocket')
+    return false
   }
 }
 

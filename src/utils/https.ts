@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2020-11-03 10:01:50
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-22 16:42:03
+ * @LastEditTime: 2022-02-23 13:47:51
  * @Descripttion:
  */
 import axios from 'axios'
@@ -11,18 +11,16 @@ import storage from 'good-storage'
 import { message } from 'ant-design-vue'
 
 // 创建 axios 实例
-const base_url = import.meta.env.VITE_NODE_ENV === 'production' ? import.meta.env.VITE_BASE_URL : ''
 const request = axios.create({
   // API 请求的默认前缀
-  baseURL: base_url,
+  baseURL: import.meta.env.MODE === 'production' ? `${import.meta.env.VITE_APP_API_URL}` : undefined,
   timeout: 20000, // 请求超时时间
 })
 
-window['BASE_URL'] = import.meta.env.VITE_BASE_URL
-console.log('BASE_URL', import.meta.env.VITE_BASE_URL)
+console.log('meta', import.meta)
 // 异常拦截处理器
 
-const errorHandler = (error: { response: { data: { message: any }; status: number }; message: any }) => {
+const errorHandler = (error: any) => {
   // console.log(error)
   if (error.response) {
     const data = error.response.data
@@ -69,9 +67,9 @@ const errorHandler = (error: { response: { data: { message: any }; status: numbe
 // 定义全局参数
 window['axiosCancel'] = []
 // request interceptor  请求拦截器
-request.interceptors.request.use(config => {
+request.interceptors.request.use((config) => {
   if (config.method === 'get') {
-    config.cancelToken = new axios.CancelToken(cancel => {
+    config.cancelToken = new axios.CancelToken((cancel) => {
       window['axiosCancel'].push({
         cancel,
       })
@@ -110,13 +108,13 @@ request.interceptors.request.use(config => {
 }, errorHandler)
 
 // response interceptor  响应拦截器
-request.interceptors.response.use(response => {
+request.interceptors.response.use((response) => {
   const _response = { ...response.data }
   if (_response.code !== 0) {
     const resData = _response.data
     let msg = ''
     if (resData) {
-      Object.keys(resData).forEach(e => {
+      Object.keys(resData).forEach((e) => {
         msg += `${resData[e]}`
       })
     }

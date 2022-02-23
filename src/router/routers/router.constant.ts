@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2020-11-03 10:01:50
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-22 10:14:06
+ * @LastEditTime: 2022-02-23 11:04:21
  * @Descripttion:
  */
 
@@ -40,42 +40,42 @@ export const constantRouter = [
       },
     ],
   },
-  // {
-  //   path: '/login',
-  //   component: LoginLayout,
-  //   children: [
-  //     {
-  //       path: '',
-  //       name: '账号登录',
-  //       component: () => import('/@/views/login/login.vue'),
-  //     },
-  //     {
-  //       path: 'email',
-  //       name: '邮箱验证',
-  //       component: () => import('/@/views/login/email.vue'),
-  //     },
-  //     {
-  //       path: 'forgotpassword',
-  //       name: '忘记密码',
-  //       component: () => import('/@/views/login/forgotpassword.vue'),
-  //     },
-  //     {
-  //       path: 'password',
-  //       name: '找回密码',
-  //       component: () => import('/@/views/login/password.vue'),
-  //     },
-  //   ],
-  // },
-  // //默认404
-  // {
-  //   path: '/error',
-  //   component: LoginLayout,
-  //   children: [
-  //     {
-  //       path: '/404',
-  //       name: '404',
-  //       component: () => import('/@/views/exception/404.vue'),
-  //     },
-  //   ],
-  // },
+  {
+    path: '/login',
+    component: LoginLayout,
+    children: [
+      {
+        path: '',
+        name: '账号登录',
+        component: () => import('/@/views/login/login.vue'),
+      },
+      // {
+      //   path: 'email',
+      //   name: '邮箱验证',
+      //   component: () => import('/@/views/login/email.vue'),
+      // },
+      // {
+      //   path: 'forgotpassword',
+      //   name: '忘记密码',
+      //   component: () => import('/@/views/login/forgotpassword.vue'),
+      // },
+      // {
+      //   path: 'password',
+      //   name: '找回密码',
+      //   component: () => import('/@/views/login/password.vue'),
+      // },
+    ],
+  },
+  //默认404
+  {
+    path: '/error',
+    component: LoginLayout,
+    children: [
+      {
+        path: '/404',
+        name: '404',
+        component: () => import('/@/views/exception/404.vue'),
+      },
+    ],
+  },
 ]
