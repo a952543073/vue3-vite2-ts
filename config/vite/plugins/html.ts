@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2022-02-22 14:27:04
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-22 18:37:37
+ * @LastEditTime: 2022-02-28 10:44:27
  * @Descripttion:
  */
 
@@ -20,25 +20,25 @@ import { Plugin } from 'vite'
 // import { minifyHtml, injectHtml } from 'vite-plugin-html' //v2+ 语法
 import { createHtmlPlugin } from 'vite-plugin-html' //v3+ 语法
 
-export function configHtmlPlugin(envs: ViteEnv, isBuild: boolean): Plugin | Plugin[] {
-  return [
-    // minifyHtml(),
-    // injectHtml({
-    //     injectData: {
-    //         appName: envs.VITE_APP_NAME,
-    //         appTitle: envs.VITE_APP_TITLE,
-    //         injectScript: `<script src="/assets/js/require.min.js"></script>`
-    //     }
-    // })
-    // createHtmlPlugin({
-    //   minify: true,
-    //   inject: {
-    //     data: {
-    //       appName: envs.VITE_APP_NAME,
-    //       appTitle: envs.VITE_APP_TITLE,
-    //       injectScript: `<script src="./inject.js"></script>`,
-    //     },
-    //   },
-    // }),
-  ]
+export function configHtmlPlugin(envs: ViteEnv, isBuild: boolean) {
+  //return [
+  // minifyHtml(),
+  // injectHtml({
+  //     injectData: {
+  //         appName: envs.VITE_APP_NAME,
+  //         appTitle: envs.VITE_APP_TITLE,
+  //         injectScript: `<script src="/assets/js/require.min.js"></script>`
+  //     }
+  // })
+  //]
+  return createHtmlPlugin({
+    minify: true,
+    inject: {
+      data: {
+        appName: envs.VITE_APP_NAME,
+        appTitle: envs.VITE_APP_TITLE,
+        injectScript: `<script src="./inject.js"></script>`,
+      },
+    },
+  })
 }

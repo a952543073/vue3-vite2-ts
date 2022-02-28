@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2021-01-11 15:43:12
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-22 15:59:01
+ * @LastEditTime: 2022-02-28 10:35:43
  * @Descripttion: 全局路由守卫
  */
 import NProgress from 'nprogress'
@@ -27,31 +27,16 @@ NProgress.configure({ speed: 500, showSpinner: false })
 const whiteList = ['/login', '/login/email', '/404', '/login/password', '/login/forgotpassword']
 
 let createNewRouterType = false
-if (!createNewRouterType) {
-  if (storage.get('USER_ROUTERS')) {
-    try {
-      const accessRoutes = getAsyncRoutes(storage.get('USER_ROUTERS'))
-      // 动态添加格式化过的路由
-      console.log('自动生成的路由', accessRoutes, ...accessRoutes)
-      accessRoutes.forEach(e => {
-        router.addRoute(e)
-      })
-      console.log('开始创建生成动态路由')
-      createNewRouterType = true
-    } catch (error) {
-      console.log('出错了', error)
-    }
-  }
-}
 
-router.beforeEach((to, from, next) => {
+/** 动态路由 */
+const createNewRouterFun = () => {
   if (!createNewRouterType) {
     if (storage.get('USER_ROUTERS')) {
       try {
         const accessRoutes = getAsyncRoutes(storage.get('USER_ROUTERS'))
         // 动态添加格式化过的路由
         console.log('自动生成的路由', accessRoutes, ...accessRoutes)
-        accessRoutes.forEach(e => {
+        accessRoutes.forEach((e) => {
           router.addRoute(e)
         })
         console.log('开始创建生成动态路由')
@@ -61,6 +46,11 @@ router.beforeEach((to, from, next) => {
       }
     }
   }
+}
+createNewRouterFun()
+
+router.beforeEach((to, from, next) => {
+  createNewRouterFun()
 
   // 获取路由 meta 中的title，并设置给页面标题
   document.title = '景邮箱本地归档3.0 - ' + (to.meta.title || to.name)
@@ -99,7 +89,7 @@ router.beforeEach((to, from, next) => {
 })
 // console.log(router.getRoutes())
 // 全局后置钩子-常用于结束动画等
-router.afterEach(transition => {
+router.afterEach((transition) => {
   NProgress.done() // NProgress结束进度条
   // console.log(transition)
 })

@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2022-02-23 15:49:57
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-28 10:11:29
+ * @LastEditTime: 2022-02-28 10:15:15
  * @Descripttion: vue模块自动化按需引入
  */
 /**
@@ -20,9 +20,12 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import {
   // ArcoResolver,
-  NaiveUiResolver,
-  AntDesignVueResolver,
   // ElementPlusResolver,
+  // --------------------------------
+  // https://www.naiveui.com/zh-CN/os-theme/docs/installation
+  NaiveUiResolver,
+  // https://next.antdv.com/docs/vue/introduce-cn/
+  AntDesignVueResolver,
   VueUseComponentsResolver,
 } from 'unplugin-vue-components/resolvers'
 
@@ -34,10 +37,10 @@ export function configUnpluginPlugin(envs?: ViteEnv, isBuild?: boolean): Plugin 
       include: [/\.vue$/, /\.md$/, /\.tsx$/],
       dts: resolve(process.cwd(), './config/types/components.d.ts'),
       resolvers: [
-        AntDesignVueResolver(),
         // ArcoResolver(),
-        NaiveUiResolver(),
         // ElementPlusResolver(),
+        AntDesignVueResolver(),
+        NaiveUiResolver(),
         VueUseComponentsResolver(),
       ],
     }),
@@ -46,8 +49,8 @@ export function configUnpluginPlugin(envs?: ViteEnv, isBuild?: boolean): Plugin 
       dts: resolve(process.cwd(), './config/types/auto-imports.d.ts'),
       imports: ['vue', 'pinia', 'vue-i18n', 'vue-router'],
       resolvers: [
-        NaiveUiResolver(),
         //ElementPlusResolver(),
+        NaiveUiResolver(),
         AntDesignVueResolver(),
         VueUseComponentsResolver(),
       ],

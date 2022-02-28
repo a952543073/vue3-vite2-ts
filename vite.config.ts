@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2021-08-03 14:25:29
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-22 18:18:45
+ * @LastEditTime: 2022-02-28 10:32:32
  * @Descripttion:
  */
 import { defineConfig, loadEnv, Alias } from 'vite'
@@ -26,7 +26,7 @@ export default defineConfig(({ command, mode }) => {
       replacement: resolve(__dirname, 'src'),
     },
     {
-      find: /#/,
+      find: '/#',
       replacement: resolve(__dirname, 'config'),
     },
   ]
