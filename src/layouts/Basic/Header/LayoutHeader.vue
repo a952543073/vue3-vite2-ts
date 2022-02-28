@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2020-11-03 10:01:50
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2021-12-23 14:47:08
+ * @LastEditTime: 2022-02-28 15:44:32
  * @Descripttion: 头部信息条 布局
 -->
 <template>
@@ -37,7 +37,7 @@ const MenuSetCollapsed = inject('MenuSetCollapsed')
 const router = useRouter()
 const newRoute = storage.get('USER_ROUTERS')
 
-const goBack = async url => {
+const goBack = async (url) => {
   if (!url) {
     const res = await USER.loginOut()
     if (!res.code) {

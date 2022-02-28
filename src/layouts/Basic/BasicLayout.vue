@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2020-11-03 10:01:50
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2021-12-22 15:45:20
+ * @LastEditTime: 2022-02-28 15:40:00
  * @Descripttion: 后台管理布局
 -->
 <template>
@@ -31,9 +31,9 @@ const userTokens = storage.get('USER_TOKEN')
 const getMenuDataAdmin = () => {
   let newMenu = [{ id: 0, name: '工作台', close: false, path: '/admin/home', icon: 'icon-layers-o' }]
   storage.get('USER_ROUTERS')
-    ? storage.get('USER_ROUTERS').forEach(e => {
+    ? storage.get('USER_ROUTERS').forEach((e) => {
         if (e.name !== '功能模块') {
-          newMenu.push({ ...e, children: e.children.map(el => ({ ...el, children: [] })) })
+          newMenu.push({ ...e, children: e.children.map((el) => ({ ...el, children: [] })) })
         }
       })
     : ''
@@ -139,7 +139,7 @@ const defaultMenuTabsData = {
 }
 // 将导航条相关数据进行缓存
 const MENU_TABS_STORAGE = {
-  set: e => {
+  set: (e) => {
     storage.set('MENU_TABS', (MENU_TABS_STORAGE.get() && { ...MENU_TABS_STORAGE.get(), ...e }) || defaultMenuTabsData)
   },
   get: () => {
@@ -164,7 +164,7 @@ const MenuState = reactive({
 const BaseMenuData = {
   data: readonly(MenuData),
   state: MenuState,
-  set: e => {
+  set: (e) => {
     MenuData.value = e
   },
 }
@@ -198,16 +198,16 @@ provide('MenuSetCollapsed', MenuSetCollapsed)
 const TabsData = reactive({ value: menuTabsStorage.tabs })
 const BaseTabsData = {
   data: readonly(TabsData),
-  set: e => {
+  set: (e) => {
     TabsData.value = menuTabsStorage.tabs
   },
-  add: e => {
+  add: (e) => {
     TabsData.value[e.title || e.name] = e
     const TabsDataVal = toRaw(TabsData.value)
     MENU_TABS_STORAGE.set({ tabs: TabsDataVal })
     // console.log(TabsDataVal)
   },
-  del: e => {
+  del: (e) => {
     if ((e.title || e.name) !== '工作台') {
       console.log(e.id)
       if (MENU_TABS_STORAGE.get().selectedKeys[0] === e.id) {
@@ -222,13 +222,13 @@ const BaseTabsData = {
 provide('BaseTabsData', BaseTabsData)
 
 // 含有子集的菜单点击
-const MenuClick = arr => {
+const MenuClick = (arr) => {
   // console.log(arr)
   MENU_TABS_STORAGE.set({ openKeys: arr })
 }
 provide('MenuClick', MenuClick)
 // 末尾菜单点击
-const MenuItemClick = e => {
+const MenuItemClick = (e) => {
   e.path && router.push(e.path)
   console.log(e)
   BaseTabsData.add(e)
@@ -237,7 +237,7 @@ const MenuItemClick = e => {
 provide('MenuItemClick', MenuItemClick)
 
 // 头部导航条点击
-const LayoutTabsClick = e => {
+const LayoutTabsClick = (e) => {
   MENU_TABS_STORAGE.set({ selectedKeys: [e.id] })
   MenuState.selectedKeys = [e.id]
 }

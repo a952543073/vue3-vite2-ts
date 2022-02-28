@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2021-02-01 16:26:05
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-28 09:47:02
+ * @LastEditTime: 2022-02-28 15:44:56
  * @Descripttion: 用户相关 APi 接口
  */
 
@@ -25,15 +25,15 @@ export const USER = {
    * @returns
    */
   login: async (data, type) => {
-    const res = await https.post(`/login/${type}`, { data })
-    // const res = { code: 0, data: { userId: 1 } }
+    // const res = await https.post(`/login/${type}`, { data })
+    const res = { code: 0, data: { userId: 1 } }
     if (res.code === 0) {
       console.log('登录返回体', res.data)
       if (res.data.userId) {
         // message.info(`${JSON.stringify(res.data)}`)
         storage.set('USER_TOKEN', { ...res.data, type })
-        // const routerData = await USER.getRouter()
-        const routerData = await USER.getRouterByUserId(res.data.userId)
+        const routerData = await USER.getRouter()
+        // const routerData = await USER.getRouterByUserId(res.data.userId)
         if (!routerData.code) {
           storage.set('USER_ROUTERS', routerData.data)
         }
@@ -140,8 +140,12 @@ export const USER = {
       },
     ]
     storage.set('USER_ROUTERS', res)
+    return { code: 0, data: res }
   },
-  loginOut: (data) => https.get('/account/login/out', { data }),
+  loginOut: (data) => {
+    return { code: 0, data: '' }
+    // return https.get('/account/login/out', { data })
+  },
 }
 
 export const verify = {
