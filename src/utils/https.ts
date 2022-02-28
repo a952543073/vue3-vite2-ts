@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2020-11-03 10:01:50
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-23 13:47:51
+ * @LastEditTime: 2022-02-28 09:28:24
  * @Descripttion:
  */
 import axios from 'axios'
@@ -76,15 +76,9 @@ request.interceptors.request.use((config) => {
     })
 
     console.warn(`调用了 get 请求`)
-    let parameter = config['parameter']
-    if (parameter) {
-      let urlCode = parameter ? '?' : ''
-      for (const k in parameter) {
-        const v = parameter[k]
-        urlCode += `${k}=${v}&`
-      }
-      urlCode = urlCode.substring(0, urlCode.length - 1)
-      config.url += urlCode
+    let data = config.data
+    if (data) {
+      config.params = config.data
     }
   }
 
@@ -93,8 +87,6 @@ request.interceptors.request.use((config) => {
     console.warn(`调用了 ${config.method} 请求`)
     // headers:{'Content-Type':'multipart/form-data'}
     config.headers['Content-Type'] = 'application/json'
-
-    config.data = config?.data?.parameter || config['parameter'] || null
   }
 
   // 如果 token 存在

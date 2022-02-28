@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2021-02-01 16:26:05
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-22 16:00:08
+ * @LastEditTime: 2022-02-28 09:26:00
  * @Descripttion: 用户相关 APi 接口
  */
 
@@ -24,8 +24,8 @@ export const USER = {
    * @param {*} type admin employ
    * @returns
    */
-  login: async (parameter, type) => {
-    const res = await https.post(`/login/${type}`, { parameter })
+  login: async (data, type) => {
+    const res = await https.post(`/login/${type}`, { data })
     // const res = { code: 0, data: { userId: 1 } }
     if (res.code === 0) {
       console.log('登录返回体', res.data)
@@ -44,7 +44,7 @@ export const USER = {
     }
     return res
   },
-  getRouterByUserId: id => https.get(`account/${id}/menu`),
+  getRouterByUserId: (id) => https.get(`account/${id}/menu`),
   getRouter: () => {
     const res = [
       {
@@ -141,18 +141,18 @@ export const USER = {
     ]
     storage.set('USER_ROUTERS', res)
   },
-  loginOut: parameter => https.get('/account/login/out', { parameter }),
+  loginOut: (parameter) => https.get('/account/login/out', { parameter }),
 }
 
 export const verify = {
-  get: parameter => https.get(`/image/verify/${parameter}`),
-  post: parameter => https.post(`/image/verify`, { parameter }),
+  get: (data) => https.get(`/image/verify/${data}`, { data }),
+  post: (data) => https.post(`/image/verify`, { data }),
 }
 
 export const EMAIL = {
-  get: token => https.get(`/login/email/send/${token}`),
-  forgetpassword: parameter => https.get(`/login/forget/password`, { parameter }),
-  post: async parameter => {
+  get: (token) => https.get(`/login/email/send/${token}`),
+  forgetpassword: (parameter) => https.get(`/login/forget/password`, { parameter }),
+  post: async (parameter) => {
     const res = await https.post(`/login/email/verify`, { parameter })
     if (!res.code) {
       console.log('登录返回体', res.data)
@@ -171,7 +171,7 @@ export const EMAIL = {
 
 export const ACCOUNT = {
   /** 修改密码 */
-  setPassword: parameter => https.patch('/account/password', { parameter }),
+  setPassword: (parameter) => https.patch('/account/password', { parameter }),
   /** 找回密码 */
-  forgetPassword: parameter => https.post('/login/forget/change/password', { parameter }),
+  forgetPassword: (parameter) => https.post('/login/forget/change/password', { parameter }),
 }
