@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2021-01-11 15:43:12
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-28 10:35:43
+ * @LastEditTime: 2022-02-28 14:41:45
  * @Descripttion: 全局路由守卫
  */
 import NProgress from 'nprogress'
@@ -59,33 +59,25 @@ router.beforeEach((to, from, next) => {
   console.log('路由监听', `from:${from.path}`, `to:${to.path}`)
 
   // 获取用户登录的token
-  if (storage.get('USER_TOKEN')) {
-    if (!to.matched.length) {
-      next('/404')
-    } else {
-      if (to.path === '/admin/home' && storage.get('USER_TOKEN').type !== 'admin') {
-        next({ path: '/employ' })
-      } else {
-        if (to.query.redirect) {
-          next(`${to.query.redirect}`)
-        } else {
-          next()
-        }
-      }
-    }
+  // if (storage.get('USER_TOKEN')) {
+  if (!to.matched.length) {
+    next('/404')
   } else {
-    if (whiteList.indexOf(to.path) !== -1) {
-      console.log('非权限路由可访问')
-      next()
+    if (to.query.redirect) {
+      next(`${to.query.redirect}`)
     } else {
-      // if (!to.matched.length) {
-      //   next({ name: '404' })
-      // } else {
-      console.log('用户未登录 请登录')
-      next(`/login?redirect=${to.path}`)
-      // }
+      next()
     }
   }
+  // } else {
+  //   if (whiteList.indexOf(to.path) !== -1) {
+  //     console.log('非权限路由可访问')
+  //     next()
+  //   } else {
+  //     console.log('用户未登录 请登录')
+  //     next(`/login?redirect=${to.path}`)
+  //   }
+  // }
 })
 // console.log(router.getRoutes())
 // 全局后置钩子-常用于结束动画等
