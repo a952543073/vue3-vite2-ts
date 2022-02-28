@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2021-02-01 16:26:05
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-28 09:26:00
+ * @LastEditTime: 2022-02-28 09:47:02
  * @Descripttion: 用户相关 APi 接口
  */
 
@@ -20,7 +20,7 @@ const api = {
 export const USER = {
   /**
    * 用户登录
-   * @param {*} parameter
+   * @param {*} data
    * @param {*} type admin employ
    * @returns
    */
@@ -141,19 +141,19 @@ export const USER = {
     ]
     storage.set('USER_ROUTERS', res)
   },
-  loginOut: (parameter) => https.get('/account/login/out', { parameter }),
+  loginOut: (data) => https.get('/account/login/out', { data }),
 }
 
 export const verify = {
-  get: (data) => https.get(`/image/verify/${data}`, { data }),
+  get: (data) => https.get(`/image/verify/${data}`),
   post: (data) => https.post(`/image/verify`, { data }),
 }
 
 export const EMAIL = {
   get: (token) => https.get(`/login/email/send/${token}`),
-  forgetpassword: (parameter) => https.get(`/login/forget/password`, { parameter }),
-  post: async (parameter) => {
-    const res = await https.post(`/login/email/verify`, { parameter })
+  forgetpassword: (data) => https.get(`/login/forget/password`, { data }),
+  post: async (data) => {
+    const res = await https.post(`/login/email/verify`, { data })
     if (!res.code) {
       console.log('登录返回体', res.data)
       if (res.data.userId) {
@@ -171,7 +171,7 @@ export const EMAIL = {
 
 export const ACCOUNT = {
   /** 修改密码 */
-  setPassword: (parameter) => https.patch('/account/password', { parameter }),
+  setPassword: (data) => https.patch('/account/password', { data }),
   /** 找回密码 */
-  forgetPassword: (parameter) => https.post('/login/forget/change/password', { parameter }),
+  forgetPassword: (data) => https.post('/login/forget/change/password', { data }),
 }
