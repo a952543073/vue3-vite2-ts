@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2022-02-22 14:26:17
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-28 10:43:06
+ * @LastEditTime: 2022-02-28 10:53:08
  * @Descripttion:
  */
 import type { Plugin } from 'vite'
