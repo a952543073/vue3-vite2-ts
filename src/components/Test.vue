@@ -8,7 +8,7 @@
 <template>
   <div @click="count++">这是 Test.vue 文件 {count : {{ count }}}</div>
 
-  <div>{{ $t('hello') }}, {{ $t('about') }}! {{ $t('demotxt') }}</div>
+  <div>{{ t('hello') }}, {{ $t('about') }}! {{ $t('demotxt') }}</div>
 </template>
 
 <script setup lang="ts">

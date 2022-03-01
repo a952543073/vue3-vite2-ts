@@ -2,13 +2,13 @@
  * @Author: ShiJunJie
  * @Date: 2020-11-03 10:01:50
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 16:30:42
+ * @LastEditTime: 2022-03-01 17:41:06
  * @Descripttion:
  */
 
 import { BasicLayout, LoginLayout } from '/@/layouts/index'
 
-export const constantRouter = [
+export default [
   // // 管理员后台界面
   {
     path: '/',

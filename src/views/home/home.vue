@@ -2,13 +2,15 @@
  * @Author: ShiJunJie
  * @Date: 2022-02-09 16:27:05
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 17:15:26
+ * @LastEditTime: 2022-03-01 17:32:34
  * @Descripttion: 
 -->
 
 <template>
   <div>
     <TestTsx />
+    ------------------
+    <Test />
   </div>
 </template>
 

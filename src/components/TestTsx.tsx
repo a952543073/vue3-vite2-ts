@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2022-03-01 16:59:49
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 17:15:33
+ * @LastEditTime: 2022-03-01 17:34:53
  * @Descripttion:
  */
 
@@ -15,10 +15,10 @@ export default defineComponent({
 
     return () => (
       <div>
+        <div onClick={clickIn}>这是 TestTex.tex文件 {`{count : ${data.value}}`}</div>
         <div>
           {t('hello')}, {t('about')}! {t('demotxt')}
         </div>
-        <div onClick={clickIn}>aa123a + {data.value}</div>
       </div>
     )
   },

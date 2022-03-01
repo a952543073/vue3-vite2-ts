@@ -2,12 +2,11 @@
  * @Author: ShiJunJie
  * @Date: 2021-10-25 17:50:35
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 10:12:50
+ * @LastEditTime: 2022-03-01 18:01:20
  * @Descripttion: 自动化路由
  */
 
 import { BasicLayout, RouterView } from '/@/layouts'
-import storage from 'good-storage'
 const modules = import.meta.glob('../../../views/**/*.vue')
 
 interface newItem {
@@ -15,7 +14,7 @@ interface newItem {
   children: any
 }
 
-export function getAsyncRoutes(routes: any) {
+export default function getAsyncRoutes(routes: any) {
   const res: Array<any> = []
   // 定义路由中需要的自定名
   const keys = ['id', 'path', 'name', 'children', 'redirect', 'meta']
@@ -45,7 +44,11 @@ export function getAsyncRoutes(routes: any) {
       if (keys.includes(key)) {
         newItem[key] = item[key]
         if (key === 'meta') {
-          newItem[key] = { ...item[key], buttons: item['buttons'] }
+          newItem[key] = {
+            requiresAuth: true,
+            ...item[key],
+            buttons: item['buttons'],
+          }
         }
       }
     }
