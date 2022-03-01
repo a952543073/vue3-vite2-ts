@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2022-03-01 15:36:07
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 18:03:07
+ * @LastEditTime: 2022-03-01 18:11:22
  * @Descripttion: 路由守卫
  */
 
@@ -101,6 +101,6 @@ export function createGuard(router: Router) {
   })
 
   router.onError((error) => {
-    console.log(error, '路由错误')
+    console.log('路由错误', error)
   })
 }

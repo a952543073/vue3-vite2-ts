@@ -2,29 +2,21 @@
  * @Author: ShiJunJie
  * @Date: 2021-10-25 17:50:35
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 18:01:20
+ * @LastEditTime: 2022-03-01 18:10:31
  * @Descripttion: 自动化路由
  */
 
 import { BasicLayout, RouterView } from '/@/layouts'
-const modules = import.meta.glob('../../../views/**/*.vue')
-
-interface newItem {
-  component: any
-  children: any
-}
+const modules = import.meta.glob('/@/views/**/*.vue')
 
 export default function getAsyncRoutes(routes: any) {
-  const res: Array<any> = []
+  const res: {}[] = []
   // 定义路由中需要的自定名
   const keys = ['id', 'path', 'name', 'children', 'redirect', 'meta']
   // 遍历路由数组去重组可用的路由
   // console.log(routes)
   routes.forEach((item: { component: String; children: {} }) => {
-    let newItem: newItem = {
-      component: undefined,
-      children: undefined,
-    }
+    let newItem = {}
 
     if (item.component) {
       // 判断 item.component 是否等于 'Layout',若是则直接替换成引入的 Layout 组件
@@ -53,8 +45,8 @@ export default function getAsyncRoutes(routes: any) {
       }
     }
     // 若遍历的当前路由存在子路由，需要对子路由进行递归遍历
-    if (newItem.children && newItem.children.length) {
-      newItem.children = getAsyncRoutes(item.children)
+    if (newItem['children'] && newItem['children'].length) {
+      newItem['children'] = getAsyncRoutes(item.children)
     }
     res.push(newItem)
   })
