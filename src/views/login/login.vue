@@ -202,7 +202,7 @@ const setVerifyToken = (verifyToken) => {
       width: 100%;
       .t {
         font-size: 36px;
-        color: @font-1;
+        color: $font-1;
       }
       .subt {
         font-size: 20px;

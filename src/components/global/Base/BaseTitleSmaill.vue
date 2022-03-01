@@ -89,7 +89,7 @@ const props = defineProps({
     }
     .v {
       margin-left: 8px;
-      color: @font-2;
+      color: $font-2;
       &.light {
         color: #000;
       }

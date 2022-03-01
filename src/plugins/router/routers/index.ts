@@ -2,11 +2,11 @@
  * @Author: ShiJunJie
  * @Date: 2022-03-01 11:13:24
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 11:14:25
+ * @LastEditTime: 2022-03-01 11:20:23
  * @Descripttion:
  */
 
-import { constantRouter } from './router.constant.js'
-import { getAsyncRoutes } from './asyncRouter.js'
+import { constantRouter } from './constant'
+import { getAsyncRoutes } from './asyncRouter'
 
 export { constantRouter, getAsyncRoutes }
