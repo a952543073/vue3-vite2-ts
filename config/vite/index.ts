@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2022-02-22 14:26:17
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 11:15:59
+ * @LastEditTime: 2022-03-01 16:37:40
  * @Descripttion:
  */
 import type { Plugin } from 'vite'
@@ -76,10 +76,10 @@ export function createVitePlugins(envs: ViteEnv, isBuild: boolean) {
     }),
 
     // [布局系统](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
-    // Layouts({
-    //   layoutsDirs: 'src/layouts', //默认布局文件目录位置
-    //   defaultLayout: 'default', //默认布局，新增布局文件要重启vite
-    // }),
+    Layouts({
+      layoutsDirs: 'src/layouts', //默认布局文件目录位置
+      defaultLayout: 'default', //默认布局，新增布局文件要重启vite
+    }),
 
     // [实现i18n国际化支持SFC](https://github.com/intlify/vite-plugin-vue-i18n)
     vueI18n({

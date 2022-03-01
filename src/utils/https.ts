@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2020-11-03 10:01:50
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-28 09:28:24
+ * @LastEditTime: 2022-03-01 15:31:21
  * @Descripttion:
  */
 import axios from 'axios'
@@ -116,7 +116,6 @@ request.interceptors.response.use((response) => {
     if (_response.code === 601) {
       message.warn('非法请求 请重新登录')
       storage.clear()
-      // window.location.push && window.location.push('/')
       setTimeout(() => {
         window.location.reload()
       }, 1500)

@@ -2,9 +2,10 @@
  * @Author: ShiJunJie
  * @Date: 2021-01-11 15:43:12
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 11:14:27
+ * @LastEditTime: 2022-03-01 15:34:41
  * @Descripttion: 全局路由守卫
  */
+import { App } from 'vue'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { createRouter, createWebHistory, createWebHashHistory, RouteLocationRaw } from 'vue-router'
@@ -50,7 +51,6 @@ createNewRouterFun()
 
 router.beforeEach((to, from, next) => {
   createNewRouterFun()
-
   // 获取路由 meta 中的title，并设置给页面标题
   document.title = '景邮箱本地归档3.0 - ' + (to.meta.title || to.name)
   // NProgress开始进度条
@@ -84,10 +84,6 @@ router.afterEach((transition) => {
   NProgress.done() // NProgress结束进度条
   // console.log(transition)
 })
-
-window.location['push'] = (urlData: RouteLocationRaw) => {
-  router.push(urlData)
-}
 
 export default async (app: App) => {
   app.use(router)

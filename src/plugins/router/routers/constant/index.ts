@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2020-11-03 10:01:50
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 11:31:03
+ * @LastEditTime: 2022-03-01 16:30:42
  * @Descripttion:
  */
 
@@ -41,7 +41,7 @@ export const constantRouter = [
       {
         path: '/404',
         name: '404',
-        component: () => import('/@/components/exception/404.vue'),
+        component: () => import('/@/components/exception/[...404].vue'),
       },
     ],
   },

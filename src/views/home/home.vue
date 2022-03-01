@@ -2,23 +2,17 @@
  * @Author: ShiJunJie
  * @Date: 2022-02-09 16:27:05
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 11:36:07
+ * @LastEditTime: 2022-03-01 17:15:26
  * @Descripttion: 
 -->
 
 <template>
   <div>
-    <!-- <Button /> -->
-
-    {{ t('hello') }}, {{ $t('about') }}! {{ $t('demotxt') }}
+    <TestTsx />
   </div>
 </template>
 
-<script setup lang="ts">
-const { t } = useI18n()
-
-import Button from './Button'
-</script>
+<script setup lang="ts"></script>
 
 <i18n>
 {
