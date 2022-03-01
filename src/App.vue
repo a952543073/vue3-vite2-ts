@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2021-09-07 11:13:45
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-22 17:03:59
+ * @LastEditTime: 2022-03-01 10:52:59
  * @Descripttion: 入口APP文件
 -->
 <template>
@@ -33,7 +33,7 @@ const getPopupContainer = (el, dialogContext) => {
 }
 </script>
 
-<style>
+<style lang="scss">
 * {
   padding: 0;
   margin: 0;

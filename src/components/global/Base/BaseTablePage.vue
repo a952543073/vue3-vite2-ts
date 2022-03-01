@@ -12,7 +12,7 @@
       :total="total"
       show-quick-jumper
       :pageSize="pageSize"
-      :show-total="total => `共 ${total} 条`"
+      :show-total="(total) => `共 ${total} 条`"
       :showSizeChanger="true"
       @change="onChange"
       @showSizeChange="onShowSizeChange"
@@ -53,7 +53,7 @@ const onShowSizeChange = (page, pageSize) => {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .tablePage {
   padding: 18px 0 5px 0;
   display: flex;

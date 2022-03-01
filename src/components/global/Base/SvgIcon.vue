@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2020-12-04 14:32:21
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2021-11-26 18:48:44
+ * @LastEditTime: 2022-03-01 10:30:14
  * @Descripttion: svg图标  <SvgIcon name="(svgurl||iconfont)" />
 -->
 <template>
@@ -15,8 +15,8 @@
 <!-- <MyIcon class="svg-icon" :type="iconfont" /> -->
 
 <script setup>
-import { computed } from "vue"
-import { createFromIconfontCN } from "@ant-design/icons-vue"
+import { computed } from 'vue'
+import { createFromIconfontCN } from '@ant-design/icons-vue'
 
 const MyIcon = createFromIconfontCN({
   //   //at.alicdn.com/t/font_2874356_hburnxc94qo.js
@@ -30,18 +30,18 @@ const props = defineProps({
 })
 
 const iconHref = computed(() => {
-  if (props.name && props.name.indexOf("icon") > -1) {
+  if (props.name && props.name.indexOf('icon') > -1) {
     return `#${props.name}`
   } else if (props.name) {
     return `#svg-${props.name}`
   } else {
-    return ""
+    return ''
   }
 })
 // console.log(iconHref.value)
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 // .svg-icon > span {
 //   display: inline-block;
 //   width: 100%;

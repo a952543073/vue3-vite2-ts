@@ -26,7 +26,7 @@ const props = defineProps({
   slabel: String,
 })
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .title {
   font-size: 16px;
   color: #13121d;

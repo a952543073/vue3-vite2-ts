@@ -17,7 +17,14 @@
   >
     <div>
       <a-spin class="example" v-if="MenuData === []" />
-      <a-menu v-else mode="inline" theme="light" v-model:openKeys="state.openKeys" v-model:selectedKeys="state.selectedKeys" @openChange="MenuClick">
+      <a-menu
+        v-else
+        mode="inline"
+        theme="light"
+        v-model:openKeys="state.openKeys"
+        v-model:selectedKeys="state.selectedKeys"
+        @openChange="MenuClick"
+      >
         <template v-for="(item, i) in MenuData" :key="item.id">
           <template v-if="!item.children || item.children.length === 0">
             <a-menu-item :key="item.id" @click="MenuItemClick(item)">
@@ -48,4 +55,4 @@ const MenuData = BaseMenuData.data
 const state = BaseMenuData.state
 </script>
 
-<style lang="less" scoped></style>
+<style lang="scss" scoped></style>

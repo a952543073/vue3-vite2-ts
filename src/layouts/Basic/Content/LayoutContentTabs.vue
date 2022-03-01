@@ -11,7 +11,14 @@
     <a-space>
       <div class="tabsView" ref="tabsView">
         <template v-for="(e, i) in BaseTabsDataSource" :key="i">
-          <BaseTabsBtn class="tabs" :class="[{ on: route.path === e.path }]" @click="click(e, i)" @inClose="close(e, i)" :close="e.close" :label="e.title || e.name" />
+          <BaseTabsBtn
+            class="tabs"
+            :class="[{ on: route.path === e.path }]"
+            @click="click(e, i)"
+            @inClose="close(e, i)"
+            :close="e.close"
+            :label="e.title || e.name"
+          />
         </template>
       </div>
       <div class="tabsMore" v-if="BaseTabsDataSourceOut.length > 0">
@@ -20,7 +27,13 @@
             <div>关闭所有</div>
           </template> -->
           <template #content>
-            <div class="popoverCard" :class="[{ on: route.path === e.path }]" v-for="(e, i) in BaseTabsDataSourceOut" :key="i" @click.stop="click(e, i)">
+            <div
+              class="popoverCard"
+              :class="[{ on: route.path === e.path }]"
+              v-for="(e, i) in BaseTabsDataSourceOut"
+              :key="i"
+              @click.stop="click(e, i)"
+            >
               <span>{{ e.title || e.name }}</span>
               <SvgIcon name="icon-guanbijiantou" @click.stop="close(e, i), --offsetNum" />
             </div>
@@ -86,7 +99,7 @@ const close = (e, i) => {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .baseTabs {
   margin-bottom: 15px;
   display: flex;

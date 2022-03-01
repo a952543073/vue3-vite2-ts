@@ -7,7 +7,9 @@
 -->
 <template>
   <!-- 弹窗组件默认按钮 -->
-  <a-button type="primary" @click="showModal" v-if="label"> <SvgIcon v-if="iconAlign" :name="icon" />{{ label }}<SvgIcon v-if="!iconAlign" :name="icon" /> </a-button>
+  <a-button type="primary" @click="showModal" v-if="label">
+    <SvgIcon v-if="iconAlign" :name="icon" />{{ label }}<SvgIcon v-if="!iconAlign" :name="icon" />
+  </a-button>
 
   <!-- 弹窗体 -->
   <a-modal
@@ -91,7 +93,7 @@ const hide = () => {
   loading = false
 }
 
-const handleOk = e => {
+const handleOk = (e) => {
   console.log('弹窗点击确认')
   loading = true
   emit('ok', { code: true })
@@ -100,16 +102,16 @@ const handleOk = e => {
   }, 6000)
 }
 
-const handleCancel = e => {
+const handleCancel = (e) => {
   console.log('弹窗点击关闭')
   visible = false
   emit('close', e)
 }
 
-defineExpose({ show, hide, loading: e => (loading = e) })
+defineExpose({ show, hide, loading: (e) => (loading = e) })
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .content {
   border: 1px solid #edf1f2;
   border-left: 0;

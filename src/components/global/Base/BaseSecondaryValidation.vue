@@ -84,7 +84,7 @@ const submitData = async () => {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .emailContent {
   width: 430px;
   min-width: 430px;

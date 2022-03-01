@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2021-08-03 14:25:29
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-28 10:32:32
+ * @LastEditTime: 2022-03-01 10:54:23
  * @Descripttion:
  */
 import { defineConfig, loadEnv, Alias } from 'vite'
@@ -31,13 +31,17 @@ export default defineConfig(({ command, mode }) => {
     },
   ]
 
-  // 自动引入less全局文件
+  // 自动引入scss/less全局文件
   const css = {
     preprocessorOptions: {
-      less: {
+      scss: {
         javascriptEnabled: true,
-        additionalData: `@import (reference) "${resolve(__dirname, 'src/style/global/config.less')}";`,
+        additionalData: `@import '/@/assets/style/global/config.scss' ;`,
       },
+      // less: {
+      //   javascriptEnabled: true,
+      //   additionalData: `@import (reference) "${resolve(__dirname, 'src/style/global/config.less')}";`,
+      // },
     },
   }
 

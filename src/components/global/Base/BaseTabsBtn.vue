@@ -14,19 +14,19 @@
 
 <script setup>
 const props = defineProps({
-  label: { style: String, default: "label" },
+  label: { style: String, default: 'label' },
   close: { style: Boolean, default: true },
   disabled: { style: Boolean, default: false },
 })
 
-const emit = defineEmits(["inClose"])
+const emit = defineEmits(['inClose'])
 
 const inClose = () => {
-  emit("inClose")
+  emit('inClose')
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .base-tabs-btn {
   height: 32px;
   line-height: 32px;
@@ -39,7 +39,7 @@ const inClose = () => {
   cursor: pointer;
   &:hover,
   &.on {
-    background: @primary-2;
+    background: $primary-2;
     color: #fff;
     .svg-icon {
       color: #fff;

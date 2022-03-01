@@ -2,14 +2,14 @@
  * @Author: ShiJunJie
  * @Date: 2021-02-01 16:26:05
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-28 15:44:56
+ * @LastEditTime: 2022-03-01 10:53:45
  * @Descripttion: 用户相关 APi 接口
  */
 
 import https from '../utils/https'
 import storage from 'good-storage'
 
-import router from '/@/router/index'
+import router from '/@/plugins/router/index'
 
 import { message } from 'ant-design-vue'
 

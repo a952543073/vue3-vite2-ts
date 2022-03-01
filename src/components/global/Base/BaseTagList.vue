@@ -55,7 +55,7 @@ const tagChcek = (e) => {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 :deep(*) {
   transition: all 0.3s cubic-bezier(0.4, 0.8, 0.4, 1);
   animation: all 0.3s cubic-bezier(0.4, 0.8, 0.4, 1);

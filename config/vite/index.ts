@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2022-02-22 14:26:17
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-28 14:35:46
+ * @LastEditTime: 2022-03-01 11:15:59
  * @Descripttion:
  */
 import type { Plugin } from 'vite'
@@ -65,15 +65,15 @@ export function createVitePlugins(envs: ViteEnv, isBuild: boolean) {
     }),
 
     // [文件路由](https://github.com/hannoeru/vite-plugin-pages/)
-    // Pages({
-    //   pagesDir: [
-    //     { dir: 'src/views', baseRoute: '' },
-    //     { dir: 'src/features/**/views', baseRoute: 'features' },
-    //   ],
-    //   extensions: ['vue', 'md', 'tsx'],
-    //   exclude: ['**/components/*'],
-    //   nuxtStyle: true,
-    // }),
+    Pages({
+      pagesDir: [
+        { dir: 'src/views', baseRoute: '' },
+        { dir: 'src/features/**/views', baseRoute: 'features' },
+      ],
+      extensions: ['vue', 'md', 'tsx'],
+      exclude: ['**/components/*'],
+      nuxtStyle: true,
+    }),
 
     // [布局系统](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
     // Layouts({
@@ -82,11 +82,11 @@ export function createVitePlugins(envs: ViteEnv, isBuild: boolean) {
     // }),
 
     // [实现i18n国际化支持SFC](https://github.com/intlify/vite-plugin-vue-i18n)
-    // vueI18n({
-    //   runtimeOnly: true,
-    //   compositionOnly: true,
-    //   include: [resolve(process.cwd(), './src/langs/**')],
-    // }),
+    vueI18n({
+      runtimeOnly: true,
+      compositionOnly: true,
+      include: [resolve(process.cwd(), './src/langs/**')],
+    }),
 
     // [mock服务](https://github.com/vbenjs/vite-plugin-mock)
     viteMockServe(),

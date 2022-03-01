@@ -150,7 +150,7 @@ const setVerifyToken = (verifyToken) => {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .loginContent {
   display: flex;
   width: 1200px;

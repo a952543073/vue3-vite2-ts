@@ -108,7 +108,7 @@
       "})",
       "</script>",
       "",
-      "<style lang=\"less\" scoped></style>",
+      "<style lang=\"scss\" scoped></style>",
       ""
     ],
     "description": "弹窗模板"

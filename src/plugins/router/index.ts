@@ -2,15 +2,14 @@
  * @Author: ShiJunJie
  * @Date: 2021-01-11 15:43:12
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-28 15:40:47
+ * @LastEditTime: 2022-03-01 11:14:27
  * @Descripttion: 全局路由守卫
  */
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-import storage from 'good-storage'
 import { createRouter, createWebHistory, createWebHashHistory, RouteLocationRaw } from 'vue-router'
-import { constantRouter } from './routers/router.constant.js'
-import { getAsyncRoutes } from './routers/asyncRouter.js'
+import storage from 'good-storage'
+import { constantRouter, getAsyncRoutes } from './routers'
 
 // 管理端UI
 const routes = [...constantRouter]
@@ -90,4 +89,7 @@ window.location['push'] = (urlData: RouteLocationRaw) => {
   router.push(urlData)
 }
 
-export default router
+export default async (app: App) => {
+  app.use(router)
+  await router.isReady()
+}

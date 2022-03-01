@@ -163,7 +163,7 @@
       "})",
       "</script>",
       "",
-      "<style lang=\"less\" scoped>",
+      "<style lang=\"scss\" scoped>",
       ".titleView > * + *{margin-left: 10px;} .title {margin-bottom: 14px;}",
       "</style>"
     ],

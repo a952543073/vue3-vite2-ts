@@ -114,7 +114,7 @@ export const patDown2 = (
  * 只有当前同子节点的child为空才会给该末子节点增加特定class
  *
  * ant 树样式重写
- * less => .ant-tree-list-holder-inner {display: block !important;.inlineTreeNodeSon {display: inline-flex;}}
+ * scss => .ant-tree-list-holder-inner {display: block !important;.inlineTreeNodeSon {display: inline-flex;}}
  *
  * @param {Array} data
  * @returns

@@ -2,11 +2,11 @@
  * @Author: ShiJunJie
  * @Date: 2020-11-03 10:01:50
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-23 11:04:21
+ * @LastEditTime: 2022-03-01 10:12:34
  * @Descripttion:
  */
 
-import { BasicLayout, LoginLayout } from '../../layouts/index'
+import { BasicLayout, LoginLayout } from '/@/layouts/index'
 
 export const constantRouter = [
   // 员工后台界面

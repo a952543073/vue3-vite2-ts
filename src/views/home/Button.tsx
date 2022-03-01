@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2022-02-28 14:47:07
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-28 15:34:04
+ * @LastEditTime: 2022-02-28 17:00:11
  * @Descripttion:
  */
 
@@ -10,8 +10,15 @@ const Button = defineComponent({
   setup() {
     const data = ref(1)
 
-    const clickIn = () => data.value++
-    return () => <div onClick={clickIn}>aa123a + {data.value}</div>
+    return () => (
+      <div onClick={() => data.value++}>
+        aa123a + {data.value}
+        {Array.from({ length: 50 }).map((e, i) => (
+          <p>{i}</p>
+        ))}
+        <a-button>123</a-button>
+      </div>
+    )
   },
 })
 

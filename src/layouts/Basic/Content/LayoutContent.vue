@@ -30,7 +30,7 @@ import LayoutContentTabs from './LayoutContentTabs.vue'
 import LayoutContentBreadcrumb from './LayoutContentBreadcrumb.vue'
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .ant-layout-content {
   min-height: calc(100vh - 70px);
   max-height: calc(100vh - 70px);

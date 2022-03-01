@@ -48,7 +48,12 @@
             <!-- 操作栏 -->
             <template v-if="column.funs && column.funs.length > 0">
               <template v-for="(e, i) in column.funs" :key="i">
-                <a-button type="link" @click="e.fun(record)" v-if="e.show ? e.show(record) : true" :danger="e.label.indexOf(['删除']) !== -1">
+                <a-button
+                  type="link"
+                  @click="e.fun(record)"
+                  v-if="e.show ? e.show(record) : true"
+                  :danger="e.label.indexOf(['删除']) !== -1"
+                >
                   <span>{{ e.label }}</span>
                 </a-button>
               </template>
@@ -58,7 +63,11 @@
           <template v-else-if="column.type === 'status'">
             <!-- 状态对照 -->
             <div class="statusPoint">
-              <i class="point" v-if="column.typeData[record[column.key]]?.color" :style="{ backgroundColor: column.typeData[record[column.key]]?.color }"></i>
+              <i
+                class="point"
+                v-if="column.typeData[record[column.key]]?.color"
+                :style="{ backgroundColor: column.typeData[record[column.key]]?.color }"
+              ></i>
               <span>{{ column.typeData[record[column.key]]?.label }}</span>
             </div>
           </template>
@@ -75,7 +84,11 @@
                 <div class="cards">
                   <template v-for="(e, i) in record[column.key]" :key="i">
                     <span class="card" :style="{ color: e.color }" v-if="e['label']">
-                      {{ e.label }}<SvgIcon name="icon-cha" @click.stop="column.tagsFun ? column.tagsFun({ codeId: record.id, tagId: e.id }) : ''" />
+                      {{ e.label
+                      }}<SvgIcon
+                        name="icon-cha"
+                        @click.stop="column.tagsFun ? column.tagsFun({ codeId: record.id, tagId: e.id }) : ''"
+                      />
                     </span>
                   </template>
                 </div>
@@ -83,7 +96,11 @@
               <div class="cards noWarp">
                 <template v-for="(e, i) in record[column.key]" :key="i">
                   <span class="card" :style="{ color: e.color }" v-if="e['label']">
-                    {{ e.label }}<SvgIcon name="icon-cha" @click.stop="column.tagsFun ? column.tagsFun({ codeId: record.id, tagId: e.id }) : ''" />
+                    {{ e.label
+                    }}<SvgIcon
+                      name="icon-cha"
+                      @click.stop="column.tagsFun ? column.tagsFun({ codeId: record.id, tagId: e.id }) : ''"
+                    />
                   </span>
                 </template>
               </div>
@@ -94,14 +111,26 @@
           <template v-else-if="column.type === 'progress'">
             <!-- 进度条 -->
             <a-row style="flex" v-if="record[column.key]" :gutter="[0, 8]">
-              <a-col flex="auto"><a-progress :percent="parseInt(record[column.key])" size="small" style="cursor: pointer" :showInfo="false" /></a-col>
-              <a-col style="width: 45px; text-align: right">{{ record[column.key] === 'NaN' ? '0' : record[column.key] }}%</a-col>
+              <a-col flex="auto"
+                ><a-progress
+                  :percent="parseInt(record[column.key])"
+                  size="small"
+                  style="cursor: pointer"
+                  :showInfo="false"
+              /></a-col>
+              <a-col style="width: 45px; text-align: right"
+                >{{ record[column.key] === 'NaN' ? '0' : record[column.key] }}%</a-col
+              >
             </a-row>
             <template v-else>-</template>
           </template>
           <template v-else-if="column.ellipsis === true">
             <!-- 单行显示 -->
-            <a-tooltip color="#fff" placement="bottomLeft" v-if="record[column.key] && record[column.key] !== 'Invalid Date'">
+            <a-tooltip
+              color="#fff"
+              placement="bottomLeft"
+              v-if="record[column.key] && record[column.key] !== 'Invalid Date'"
+            >
               <template #title>
                 <span style="color: #7b8ba1">{{ record[column.key] }}</span>
               </template>
@@ -157,7 +186,7 @@ const rowSelection = computed(() => {
         emit('update:selectData', selectedRowKeys)
         console.log(`selectedRowKeys: ${selectedRowKeys}`, '\nselectedRows: ', selectedRows)
       },
-      getCheckboxProps: record => ({
+      getCheckboxProps: (record) => ({
         // disabled: record.name === "",
         name: record.name,
       }),
@@ -178,7 +207,7 @@ const newColumn = computed(() => {
     (props.columns &&
       props.columns.length > 0 &&
       reactive([
-        ...Array.from(props.columns, e => {
+        ...Array.from(props.columns, (e) => {
           return {
             key: e.dataIndex,
             resizable: true,
@@ -213,19 +242,19 @@ const newColumn = computed(() => {
         width: 50,
         fixed: 'right',
         align: 'center',
-        funs: [{ label: '修改', fun: e => console.log(e) }],
+        funs: [{ label: '修改', fun: (e) => console.log(e) }],
       },
     ])
   )
 })
 
 const newDataScourde = computed(() => {
-  return props.dataSource && Array.from(props.dataSource, e => ({ key: e.id, ...e }))
+  return props.dataSource && Array.from(props.dataSource, (e) => ({ key: e.id, ...e }))
 })
 
 const scroll_x = computed(() => {
   let x = 0
-  Array.from(newColumn, e => (x += e.width))
+  Array.from(newColumn, (e) => (x += e.width))
   // console.log(props.columns[props.columns.length - 1].width)
   return x + props.columns.length
 })
@@ -259,7 +288,7 @@ const onChange = (pagination, filters, sorter, extra) => {
 defineExpose({ setNewScroll_y: debounce(setNewScroll_y) })
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 // .ant-table-striped :deep(.table-striped) td {
 //   // background-color: #fafafa;
 // }

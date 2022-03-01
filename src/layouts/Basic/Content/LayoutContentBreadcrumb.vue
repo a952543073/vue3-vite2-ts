@@ -28,15 +28,15 @@ const route = useRoute()
 
 const router = useRouter()
 console.log(route.params)
-const routeParams = e => (route.params[e] ? '/' + route.params[e] : e)
+const routeParams = (e) => (route.params[e] ? '/' + route.params[e] : e)
 
-const getBreadcrumb = item => {
-  const arr = item.filter(e => {
+const getBreadcrumb = (item) => {
+  const arr = item.filter((e) => {
     return e.redirect ? false : true || e.path ? true : false
   })
   console.log(arr)
   let arrData = []
-  arr.forEach(e => {
+  arr.forEach((e) => {
     // let str = ''
     // if (e.path && e.path.indexOf(':') !== -1) {
     //   e.path.split(':').forEach(item => {
@@ -59,7 +59,7 @@ watch(
 )
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .breadcrumb {
   margin-bottom: 15px;
   line-height: 100%;

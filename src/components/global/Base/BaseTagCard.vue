@@ -7,7 +7,7 @@
 -->
 <template>
   <div class="cards">
-    <div v-for="(e, i) in getTagColor()" :key="i" :style="{backgroundColor:e}" @click="click_(i)">
+    <div v-for="(e, i) in getTagColor()" :key="i" :style="{ backgroundColor: e }" @click="click_(i)">
       <SvgIcon v-show="value == i" name="icon-selected" />
     </div>
   </div>
@@ -21,10 +21,10 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:value'])
-const click_ = i => emit('update:value', i)
+const click_ = (i) => emit('update:value', i)
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .cards {
   font-size: 0;
 

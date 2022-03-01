@@ -15,18 +15,18 @@
 </template>
 
 <script setup>
-import { computed } from "vue"
+import { computed } from 'vue'
 
 const props = defineProps({
   icon: String,
   label: {
     type: String,
-    default: "按钮: label",
+    default: '按钮: label',
   },
   type: {
     type: String,
     // default  primary
-    default: "default",
+    default: 'default',
   },
   radius: {
     type: Boolean,
@@ -43,17 +43,17 @@ const props = defineProps({
 })
 
 const class_ = computed(() => {
-  return [props.type, props.radius ? "radius" : "", props.check ? "on" : ""]
+  return [props.type, props.radius ? 'radius' : '', props.check ? 'on' : '']
 })
 
-const emit = defineEmits(["onClose"])
+const emit = defineEmits(['onClose'])
 
-const onClose = e => {
-  emit("onClose")
+const onClose = (e) => {
+  emit('onClose')
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .base-button {
   display: inline-block;
   box-sizing: border-box;

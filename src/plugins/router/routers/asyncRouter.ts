@@ -2,13 +2,13 @@
  * @Author: ShiJunJie
  * @Date: 2021-10-25 17:50:35
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-22 17:11:59
+ * @LastEditTime: 2022-03-01 10:12:50
  * @Descripttion: 自动化路由
  */
 
 import { BasicLayout, RouterView } from '/@/layouts'
 import storage from 'good-storage'
-const modules = import.meta.glob('../../views/**/*.vue')
+const modules = import.meta.glob('../../../views/**/*.vue')
 
 interface newItem {
   component: any

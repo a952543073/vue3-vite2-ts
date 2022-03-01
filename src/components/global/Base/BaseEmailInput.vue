@@ -28,13 +28,13 @@ const props = defineProps({
 let value = $ref('')
 let options = $ref([])
 
-const handleSearch = val => {
+const handleSearch = (val) => {
   let res
 
   if (!val || val.indexOf('@') >= 0) {
     res = []
   } else {
-    res = ['gmail.com', '163.com', 'qq.com'].map(domain => ({
+    res = ['gmail.com', '163.com', 'qq.com'].map((domain) => ({
       value: `${val}@${domain}`,
     }))
   }
@@ -43,7 +43,7 @@ const handleSearch = val => {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .base-email-input {
   width: 100%;
 }

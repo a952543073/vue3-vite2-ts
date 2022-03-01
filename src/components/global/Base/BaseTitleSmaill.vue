@@ -21,18 +21,18 @@
 const props = defineProps({
   label: {
     style: String,
-    default: "这里是标题对应字段 : label",
+    default: '这里是标题对应字段 : label',
     required: true,
   },
   icon: String,
   icontype: {
     srtle: String,
-    default: "dark", // 'light'
+    default: 'dark', // 'light'
   },
 })
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .title {
   font-size: 16px;
   width: 100%;
@@ -66,15 +66,15 @@ const props = defineProps({
       &.dark {
         color: #fff;
         .svg-icon {
-          background: @primary-2;
+          background: $primary-2;
         }
         &::before {
-          content: "";
+          content: '';
           top: -4px;
           left: -4px;
           right: -4px;
           bottom: -4px;
-          background: @primary-3;
+          background: $primary-3;
           z-index: 0;
           border-radius: 50%;
           position: absolute;
@@ -83,7 +83,7 @@ const props = defineProps({
       &.light {
         background: #fff;
         .svg-icon {
-          color: @primary-2;
+          color: $primary-2;
         }
       }
     }

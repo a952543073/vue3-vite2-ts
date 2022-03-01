@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2021-09-07 15:40:54
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2021-12-21 15:42:36
+ * @LastEditTime: 2022-03-01 10:30:31
  * @Descripttion: 
 -->
 <template>
@@ -23,7 +23,7 @@
 
 <script setup></script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .loginView {
   width: 100vw;
   min-width: 1200px;

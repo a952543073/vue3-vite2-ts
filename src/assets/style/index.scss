@@ -2,74 +2,71 @@
  * @Author: ShiJunJie
  * @Date: 2021-10-19 13:51:27
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-22 17:12:18
+ * @LastEditTime: 2022-03-01 09:59:43
  * @Descripttion:  全局公共样式文件
  */
-// @import url(./global/config.less);
-body {
-  overflow: auto;
-  // min-width: 1200px;
-  &::-webkit-scrollbar {
-    width: 0px;
-    height: 8px;
-    border-radius: 50px;
-  }
-}
 
+ body {
+	overflow: auto;
+	&::-webkit-scrollbar {
+		width: 0px;
+		height: 8px;
+		border-radius: 50px;
+	}
+}
 * {
-  padding: 0;
-  margin: 0;
-  &::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-    border-radius: 50px;
-  }
-  &::-webkit-scrollbar-track {
-    background-color: rgba(0, 21, 41, 0);
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: #bbc2cd;
-    border-radius: 50px;
-  }
-  .main {
-    &::-webkit-scrollbar {
-      width: 7px;
-      height: 2px;
-    }
-  }
+	padding: 0;
+	margin: 0;
+	.main {
+		&::-webkit-scrollbar {
+			width: 7px;
+			height: 2px;
+		}
+	}
+}
+*::-webkit-scrollbar {
+	width: 4px;
+	height: 4px;
+	border-radius: 50px;
+}
+*::-webkit-scrollbar-track {
+	background-color: rgba(0,21,41,0);
+}
+*::-webkit-scrollbar-thumb {
+	background-color: #bbc2cd;
+	border-radius: 50px;
 }
 .colorB {
-  color: #4b7dfb;
+	color: #4b7dfb;
 }
-
-[id^='icon'] path {
-  fill: currentColor !important;
+[id^='icon'] {
+	path {
+		fill: currentColor !important;
+	}
 }
 section {
-  background: #fff;
-  border-radius: 8px;
+	background: #fff;
+	border-radius: 8px;
 }
-
 p {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 .ant-layout-header {
-  background: #fff;
-  height: 70px;
-  padding: 0;
+	background: #fff;
+	height: 70px;
+	padding: 0;
 }
 .ant-menu-vertical .ant-menu-item::after,
 .ant-menu-vertical-left .ant-menu-item::after,
 .ant-menu-vertical-right .ant-menu-item::after,
 .ant-menu-inline .ant-menu-item::after {
-  right: auto;
-  left: 0;
+	right: auto;
+	left: 0;
 }
 .ant-btn > .anticon + span,
 .ant-btn > span + .anticon {
-  margin-left: 4px;
+	margin-left: 4px;
 }
-// 表格样式重写
 .ant-table.ant-table-middle > .ant-table-content > .ant-table-header > table > .ant-table-thead > tr > th,
 .ant-table.ant-table-middle > .ant-table-content > .ant-table-body > table > .ant-table-thead > tr > th,
 .ant-table.ant-table-middle
@@ -174,84 +171,77 @@ p {
   > .ant-table-tbody
   > tr
   > td {
-  padding: 0 16px;
-  height: 41px;
+	padding: 0 16px;
+	height: 41px;
 }
-// 表格分页样式重写
 .ant-pagination {
-  font-size: 12px;
+	font-size: 12px;
 }
 .ant-pagination-total-text {
-  background: #fff;
-  padding: 0 10px;
-  border: 1px solid #edf1f2;
+	background: #fff;
+	padding: 0 10px;
+	border: 1px solid #edf1f2;
 }
 .ant-pagination-prev .ant-pagination-item-link,
 .ant-pagination-next .ant-pagination-item-link {
-  font-size: 10px;
+	font-size: 10px;
 }
-
-// 弹窗按钮样式重写
-
 .ant-modal-content {
-  border-radius: 8px;
+	border-radius: 8px;
 }
 .ant-modal-body {
-  padding: 0;
+	padding: 0;
 }
 .ant-modal-header {
-  border-radius: 8px;
-  border-bottom: 0px;
+	border-radius: 8px;
+	border-bottom: 0px;
 }
 .ant-modal-footer {
-  border-top: 0;
+	border-top: 0;
 }
-
-//按钮样式重写
 .ant-btn {
-  border-radius: 4px;
-  line-height: 1;
+	border-radius: 4px;
+	line-height: 1;
 }
 .ant-btn-primary {
-  background-color: #4d7cfe;
-  border-color: #4d7cfe;
-  &:hover,
-  &:focus {
-    background-color: #325cfd;
-    border-color: #325cfd;
-    color: #fff;
-  }
+	background-color: #4d7cfe;
+	border-color: #4d7cfe;
 }
-// ant 输入的边框圆角重写
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+	background-color: #325cfd;
+	border-color: #325cfd;
+	color: #fff;
+}
 .ant-input,
 .ant-picker,
 .ant-select:not(.ant-select-customize-input) .ant-select-selector {
-  border-radius: 4px;
+	border-radius: 4px;
 }
-
 .ant-tree-list-holder-inner {
-  display: block !important;
-  .inlineTreeNodeSon {
-    display: inline-flex;
-  }
+	display: block !important;
+	.inlineTreeNodeSon {
+		display: inline-flex;
+	}
 }
-
-.whiteSpace .ant-form-item-label {
-  white-space: inherit;
+.whiteSpace {
+	.ant-form-item-label {
+		white-space: inherit;
+	}
 }
-.ant-form-item-label > label {
-  color: #5f7490;
+.ant-form-item-label {
+	& > label {
+		color: #5f7490;
+	}
 }
-
-// 审计状态样式
 .pointLabel {
-  display: flex;
-  align-items: center;
-  .point {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    margin-right: 5px;
-    border-radius: 100%;
-  }
+	display: flex;
+	align-items: center;
+	.point {
+		display: inline-block;
+		width: 6px;
+		height: 6px;
+		margin-right: 5px;
+		border-radius: 100%;
+	}
 }

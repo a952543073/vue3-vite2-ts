@@ -52,7 +52,7 @@ const goBack = async (url) => {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .header {
   display: flex;
   .l {
@@ -63,14 +63,14 @@ const goBack = async (url) => {
       cursor: pointer;
     }
     .title {
-      color: @primary-1;
+      color: $primary-1;
       font-size: 18px;
       padding-top: 12px;
       margin-left: 8px;
       > span::before {
         content: '';
         padding-right: 8px;
-        border-left: 1px solid @primary-1;
+        border-left: 1px solid $primary-1;
       }
     }
   }
