@@ -101,6 +101,7 @@ export function createGuard(router: Router) {
   })
 
   router.onError((error) => {
+    NProgress.done()
     console.log('路由错误', error)
   })
 }
