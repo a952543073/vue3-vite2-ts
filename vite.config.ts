@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2021-08-03 14:25:29
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-02 15:24:28
+ * @LastEditTime: 2022-03-02 16:30:43
  * @Descripttion:
  */
 import { defineConfig, loadEnv, Alias } from 'vite'
@@ -36,6 +36,7 @@ export default defineConfig(async ({ command, mode }) => {
   }
 
   const vitePluginsData = { envs: viteEnv, isBuild, command, mode }
+  console.log(vitePluginsData)
 
   return {
     mode: viteEnv.VITE_NODE_ENV == 'pro' ? 'production' : 'development',

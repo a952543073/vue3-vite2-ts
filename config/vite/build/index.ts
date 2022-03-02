@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2022-02-22 14:27:04
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-02 15:23:16
+ * @LastEditTime: 2022-03-02 16:31:43
  * @Descripttion:
  */
 import { resolve } from 'path'
@@ -38,7 +38,12 @@ export function createViteBuild(app: AppEnv, options?: viteUserOptions) {
     },
   }
 
-  if (options.mode == 'production') {
+  console.log(
+    `'production'.indexOf(options.mode) !== -1`,
+    process.env.npm_lifecycle_event,
+    'production'.indexOf(options.mode) !== -1
+  )
+  if ('production'.indexOf(options.mode) !== -1) {
     // 发布时删除全部 console 打印 https://github.com/terser/terser#minify-options
     buildAPP.minify = 'terser'
     buildAPP.terserOptions = {

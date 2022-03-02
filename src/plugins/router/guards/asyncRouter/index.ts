@@ -2,15 +2,15 @@
  * @Author: ShiJunJie
  * @Date: 2021-10-25 17:50:35
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 18:10:31
+ * @LastEditTime: 2022-03-02 16:08:40
  * @Descripttion: 自动化路由
  */
 
 import { BasicLayout, RouterView } from '/@/layouts'
 const modules = import.meta.glob('/@/views/**/*.vue')
 
-export default function getAsyncRoutes(routes: any) {
-  const res: {}[] = []
+export default function getAsyncRoutes(routes: any): any[] {
+  let res: {}[] = []
   // 定义路由中需要的自定名
   const keys = ['id', 'path', 'name', 'children', 'redirect', 'meta']
   // 遍历路由数组去重组可用的路由
