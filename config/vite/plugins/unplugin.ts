@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2022-02-23 15:49:57
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-28 10:15:15
+ * @LastEditTime: 2022-03-02 14:49:45
  * @Descripttion: vue模块自动化按需引入
  */
 /**
@@ -46,8 +46,23 @@ export function configUnpluginPlugin(envs?: ViteEnv, isBuild?: boolean): Plugin 
     }),
     // import自动引入
     AutoImport({
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/,
+        /\.vue\?vue/, // .vue
+        /\.md$/, // .md
+      ],
       dts: resolve(process.cwd(), './config/types/auto-imports.d.ts'),
-      imports: ['vue', 'pinia', 'vue-i18n', 'vue-router'],
+      imports: [
+        'vue',
+        'pinia',
+        'vue-i18n',
+        'vue-router',
+        '@vueuse/core',
+        '@vueuse/head',
+        /** 自定义引入 */
+        // { '/@/utils/https': ['https'] },
+      ],
       resolvers: [
         //ElementPlusResolver(),
         NaiveUiResolver(),

@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2020-11-03 10:01:50
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-02 09:04:53
+ * @LastEditTime: 2022-03-02 14:58:03
  * @Descripttion:
  */
 
@@ -20,7 +20,7 @@ export default [
         path: '/admin/home',
         meta: { requiresAuth: true },
         name: '工作台',
-        component: () => import('/@/views/home/home.vue'),
+        component: () => import('/@/views/home/index.vue'),
       },
     ],
   },
@@ -31,7 +31,7 @@ export default [
       {
         path: '',
         name: '登录',
-        component: () => import('/@/views/login/login.vue'),
+        component: () => import('/@/views/login/index.vue'),
       },
     ],
   },

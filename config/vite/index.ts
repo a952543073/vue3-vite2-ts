@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2022-02-22 14:26:17
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 16:37:40
+ * @LastEditTime: 2022-03-02 15:11:40
  * @Descripttion:
  */
 import type { Plugin } from 'vite'
@@ -30,9 +30,10 @@ import viteCompression from 'vite-plugin-compression'
 // vite build && vite server
 import { createViteBuild } from './build'
 import { createViteServer } from './server'
+
 export { createViteBuild, createViteServer }
 
-export function createVitePlugins(envs: ViteEnv, isBuild: boolean) {
+export function createVitePlugins(options: viteUserOptions) {
   const vitePlugins: (Plugin | Plugin[])[] = [
     // 官方VUE模板解析器增加支持md文件
     vue({
@@ -68,7 +69,7 @@ export function createVitePlugins(envs: ViteEnv, isBuild: boolean) {
     Pages({
       pagesDir: [
         { dir: 'src/views', baseRoute: '' },
-        { dir: 'src/features/**/views', baseRoute: 'features' },
+        // { dir: 'src/features/**/views', baseRoute: 'features' },
       ],
       extensions: ['vue', 'md', 'tsx'],
       exclude: ['**/components/*'],
@@ -78,7 +79,7 @@ export function createVitePlugins(envs: ViteEnv, isBuild: boolean) {
     // [布局系统](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
     Layouts({
       layoutsDirs: 'src/layouts', //默认布局文件目录位置
-      defaultLayout: 'default', //默认布局，新增布局文件要重启vite
+      defaultLayout: 'LoginLayout', //默认布局，新增布局文件要重启vite
     }),
 
     // [实现i18n国际化支持SFC](https://github.com/intlify/vite-plugin-vue-i18n)
@@ -99,10 +100,10 @@ export function createVitePlugins(envs: ViteEnv, isBuild: boolean) {
   // vitePlugins.push(demo());
 
   // 压缩与参数替换插件
-  vitePlugins.push(configHtmlPlugin(envs, isBuild))
+  vitePlugins.push(configHtmlPlugin(options))
 
   // [生产环境资源压缩，结合nginx gzip部署丝滑无比](https://github.com/alloc/vite-plugin-compress)
-  isBuild && vitePlugins.push(viteCompression())
+  options.isBuild && vitePlugins.push(viteCompression())
 
   return vitePlugins
 }

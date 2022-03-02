@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2021-09-07 11:13:45
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 11:03:18
+ * @LastEditTime: 2022-03-02 10:09:04
  * @Descripttion: 入口文件
  */
 
@@ -19,6 +19,15 @@ setGlobalOptions({
   // refreshOnWindowFocus: true, // 浏览器视窗焦点触发
   // refocusTimespan: 1000, // 请求间隔时间
 })
+
+/** 组件已经使用 unplugin-vue-components 自动引入 */
+// import globalComponents from '/@/components/global/index'
+// import Antd from 'ant-design-vue'
+import 'ant-design-vue/dist/antd.css'
+
+/** 组件已经使用 unplugin-vue-components 自动引入 */
+// app.use(Antd)
+// app.use(globalComponents)
 
 const app = createApp(App)
 

@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2020-11-03 10:01:50
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-02-28 15:40:00
+ * @LastEditTime: 2022-03-02 14:21:39
  * @Descripttion: 后台管理布局
 -->
 <template>
@@ -15,13 +15,13 @@
   </a-layout>
 </template>
 <script setup>
-import LayoutMenu from './Menu/LayoutMenu.vue'
-import LayoutHeader from './Header/LayoutHeader.vue'
-import LayoutContent from './Content/LayoutContent.vue'
+import LayoutMenu from './Basic/Menu/LayoutMenu.vue'
+import LayoutHeader from './Basic/Header/LayoutHeader.vue'
+import LayoutContent from './Basic/Content/LayoutContent.vue'
 
 import { reactive, provide, readonly, onMounted, watch, computed, toRaw } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { _throttle } from '../../utils/util'
+import { _throttle } from '/@/utils/util'
 
 import storage from 'good-storage'
 

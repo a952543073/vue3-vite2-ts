@@ -2,17 +2,22 @@
  * @Author: ShiJunJie
  * @Date: 2021-09-07 14:49:37
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 15:24:58
+ * @LastEditTime: 2022-03-02 12:02:17
  * @Descripttion: 
 -->
 <template>
   <div @click="count++">这是 Test.vue 文件 {count : {{ count }}}</div>
 
   <div>{{ t('hello') }}, {{ $t('about') }}! {{ $t('demotxt') }}</div>
+
+  ------------------
+  <p>{{ x }}, {{ y }},{{ sourceType }}</p>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+
+const { x, y, sourceType } = useMouse()
 
 const { t } = useI18n()
 

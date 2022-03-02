@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2022-03-01 15:36:07
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-02 09:04:50
+ * @LastEditTime: 2022-03-02 14:26:33
  * @Descripttion: 路由守卫
  */
 
@@ -19,6 +19,8 @@ import NotFound from '/@/components/exception/[...404].vue'
 // 配置NProgress进度条选项 —— 动画效果
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+import { RouterView } from '/@/layouts'
+
 NProgress.configure({ speed: 500, showSpinner: false })
 
 const REDIRECT_NAME = 'Redirect'
@@ -44,7 +46,8 @@ export function resetRouter(router: Router) {
 }
 
 export function createRoutes(routes: RouteRecordRaw[]): RouteRecordRaw[] {
-  routes.push({ path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound, meta: { layout: 'blank' } })
+  console.log(routes)
+  routes.push({ path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound, meta: { layout: 'RouterView' } })
   return setupLayouts(routes)
 }
 
