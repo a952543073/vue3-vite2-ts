@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2021-02-01 16:26:05
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 10:53:45
+ * @LastEditTime: 2022-03-02 08:55:55
  * @Descripttion: 用户相关 APi 接口
  */
 
@@ -51,6 +51,7 @@ export const USER = {
         name: '企业配置',
         path: '/enterprise',
         component: 'BasicLayout',
+        icon: 'icon-layers-o',
         children: [
           {
             path: '/enterprise/email/archive',
@@ -69,6 +70,7 @@ export const USER = {
       },
       {
         name: '邮件搜索',
+        icon: 'icon-layers-o',
         path: '/',
         component: 'BasicLayout',
         children: [
@@ -78,6 +80,7 @@ export const USER = {
       },
       {
         name: '邮件审计',
+        icon: 'icon-layers-o',
         path: '/audit',
         component: 'BasicLayout',
         children: [
@@ -104,6 +107,7 @@ export const USER = {
       },
       {
         name: '辅助工具',
+        icon: 'icon-layers-o',
         path: '/tool',
         component: 'BasicLayout',
         children: [
@@ -113,6 +117,7 @@ export const USER = {
       },
       {
         name: '日志管理',
+        icon: 'icon-layers-o',
         path: '/log',
         component: 'BasicLayout',
         children: [
@@ -128,6 +133,7 @@ export const USER = {
       },
       {
         name: '关于系统',
+        icon: 'icon-layers-o',
         path: '/about',
         component: 'BasicLayout',
         children: [{ path: '/about', name: '关于系统', component: '/about/page' }],

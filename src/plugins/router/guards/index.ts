@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2022-03-01 15:36:07
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 18:11:22
+ * @LastEditTime: 2022-03-02 09:04:50
  * @Descripttion: 路由守卫
  */
 
@@ -85,7 +85,8 @@ export function createGuard(router: Router) {
     const needLogin = Boolean(to.meta?.requiresAuth)
     if (needLogin && !storage.get('USER_TOKEN')) {
       // 此路由需要授权，请检查是否已登录
-      next({ name: 'login', query: { redirect: to.fullPath } })
+      console.log('此路由需要授权，请检查是否已登录')
+      next({ name: '登录', query: { redirect: to.fullPath } })
     }
 
     next()

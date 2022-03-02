@@ -45,7 +45,7 @@ const MenuDataAdmin = reactive(getMenuDataAdmin())
 
 // 导航菜单数据
 const MenuData =
-  userTokens.type !== 'admin'
+  userTokens && userTokens?.type !== 'admin'
     ? reactive([
         { id: 0, name: '归档邮件查询', close: false, path: '/employ/home', icon: 'icon-layers-o' },
         { id: 1, name: '邮件恢复队列', close: false, path: '/employ/list', icon: 'icon-layers-o' },
