@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2021-08-03 14:25:29
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-02 15:12:37
+ * @LastEditTime: 2022-03-02 15:24:28
  * @Descripttion:
  */
 import { defineConfig, loadEnv, Alias } from 'vite'
@@ -21,14 +21,8 @@ export default defineConfig(async ({ command, mode }) => {
 
   // 引用资源标识别名
   const alias: Alias[] = [
-    {
-      find: '/@',
-      replacement: resolve(__dirname, 'src'),
-    },
-    {
-      find: '/#',
-      replacement: resolve(__dirname, 'config'),
-    },
+    { find: '/@', replacement: resolve(__dirname, 'src') },
+    { find: '/#', replacement: resolve(__dirname, 'config') },
   ]
 
   // 开发环境解决警告: You are running the esm-bundler build of vue-i18n.
@@ -47,7 +41,7 @@ export default defineConfig(async ({ command, mode }) => {
     mode: viteEnv.VITE_NODE_ENV == 'pro' ? 'production' : 'development',
     base: viteEnv.VITE_APP_BASE_URL || '',
     define: { __APP__: JSON.stringify(__APP__) },
-    build: createViteBuild(__APP__, isBuild),
+    build: createViteBuild(__APP__, vitePluginsData),
     plugins: await createVitePlugins(vitePluginsData),
     server: createViteServer(vitePluginsData),
     resolve: { alias, dedupe: ['vue'] },
