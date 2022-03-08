@@ -58,8 +58,8 @@ export function configUnpluginPlugin(envs?: ViteEnv, isBuild?: boolean): Plugin 
         'pinia',
         'vue-i18n',
         'vue-router',
-        '@vueuse/core',
-        '@vueuse/head',
+        //'@vueuse/core',
+        //'@vueuse/head',
         /** 自定义引入 */
         // { '/@/utils/https': ['https'] },
       ],
