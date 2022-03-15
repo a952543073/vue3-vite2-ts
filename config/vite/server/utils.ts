@@ -1,6 +1,8 @@
-import { readFileSync, writeFileSync, existsSync, lstatSync} from "fs"
-
+import { readFileSync, existsSync, writeFileSync, lstatSync } from "fs"
 import path from 'path';
+
+declare type Recordable<T = any> = Record<string, T>;
+
 function pathResolve(dir: string) {
     return path.resolve(process.cwd(), '.', dir);
 }
@@ -62,8 +64,6 @@ function writeEnvTypes(path: string, filteredEnvString: []) {
     export {}`;
 }
 
-declare type Recordable<T = any> = Record<string, T>;
-
 export function envToType() {
     const envPath = pathResolve('./config/.env')
     const envString = readFileSync(envPath, {
@@ -74,8 +74,8 @@ export function envToType() {
     const filteredEnvString = parsedEnvString.filter((line: any) => line.isEnvVar);
 
     filteredEnvString.map(({ key, value }, i) => {
-        let line = `${i ? "      " : ""}${key}: ${toString.call(value).toString()};`;
-        // console.log(line);
+        let line = `${key}: ${toString.call(value).toString()};`;
+        console.log(line);
     });
 }
 
@@ -86,14 +86,10 @@ export function formatEnv(envs: Recordable): ViteEnv {
         let realName = envs[envName].replace(/\\n/g, '\n');
         realName = realName === 'true' ? true : realName === 'false' ? false : realName;
 
-        if (envName === 'VITE_PORT') {
+        if (envName === 'VITE_HTTP_PORT') {
             realName = Number(realName);
         }
-        if (envName === 'VITE_PROXY') {
-            try {
-                realName = JSON.parse(realName);
-            } catch (error) { }
-        }
+        
         ret[envName] = realName;
         process.env[envName] = realName;
     }

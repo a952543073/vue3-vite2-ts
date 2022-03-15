@@ -2,13 +2,13 @@
  * @Author: ShiJunJie
  * @Date: 2022-02-23 15:49:57
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-02 15:12:30
+ * @LastEditTime: 2022-03-15 10:07:19
  * @Descripttion:
  */
-import { ServerOptions } from 'vite'
+import type { ServerOptions } from 'vite'
 
-export function createViteServer(options: viteUserOptions) {
-  const Options: ServerOptions = {
+export default (options?: viteUserOptions) => {
+  const server: ServerOptions = {
     host: '0.0.0.0',
     proxy: {
       '/api': {
@@ -16,7 +16,12 @@ export function createViteServer(options: viteUserOptions) {
         changeOrigin: true,
         rewrite: (path: string) => path.replace(/^\/api/, ''),
       },
-    },
+    }
+  };
+
+  if (options.envs.VITE_HTTP_PORT) {
+    server.port = options.envs.VITE_HTTP_PORT
   }
-  return Options
+
+  return server;
 }
