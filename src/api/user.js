@@ -9,7 +9,7 @@
 import https from '../utils/https'
 import storage from 'good-storage'
 
-import router from '/@/plugins/router/index'
+// import router from '/@/plugins/router/index'
 
 import { message } from 'ant-design-vue'
 
