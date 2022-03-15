@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2020-11-03 10:01:50
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-01 15:31:21
+ * @LastEditTime: 2022-03-15 18:03:06
  * @Descripttion:
  */
 import axios from 'axios'
@@ -13,7 +13,7 @@ import { message } from 'ant-design-vue'
 // 创建 axios 实例
 const request = axios.create({
   // API 请求的默认前缀
-  baseURL: import.meta.env.MODE === 'production' ? `${import.meta.env.VITE_APP_API_URL}` : undefined,
+  baseURL: import.meta.env.NODE_ENV === 'production' ? `${import.meta.env.VITE_APP_API_URL}` : undefined,
   timeout: 20000, // 请求超时时间
 })
 
