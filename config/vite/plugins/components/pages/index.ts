@@ -2,7 +2,7 @@
  * @Author: ShiJunJie
  * @Date: 2022-03-15 10:04:15
  * @LastEditors: ShiJunJie
- * @LastEditTime: 2022-03-15 12:16:38
+ * @LastEditTime: 2022-03-15 12:24:28
  * @Descripttion: 
  */
 import Pages from 'vite-plugin-pages'
@@ -21,7 +21,7 @@ export default (options?: viteUserOptions) => {
     // [布局系统](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
     Layouts({
       layoutsDirs: 'src/layouts', //默认布局文件目录位置
-      defaultLayout: 'RouterView' //默认布局，新增布局文件要重启vite
+      defaultLayout: 'LoginLayout' //默认布局，新增布局文件要重启vite
     })
   ]
   return { plugins }
